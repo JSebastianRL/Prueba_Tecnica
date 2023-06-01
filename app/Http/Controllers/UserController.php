@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use id;
 use App\Models\User;
+use App\Models\Tipo_id_document;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+	public function showCreateUsers()
+    {
+        return response()->json(['tipo_id_documents' => Tipo_id_document::all()]);
+    }
 	public function getAllUsers()
 	{
 		$users = User::get();
