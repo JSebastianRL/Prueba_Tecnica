@@ -3,11 +3,16 @@
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('Users')->group(function () {
+Route::group(['prefix' => 'Users', 'controller' => UserController::class], function () {
 
-	Route::get('/GetAllUsers', [UserController::class, 'getAllUsers']);
-	Route::get('/GetAllUsers', [UserController::class, 'getAllUsers']);
-	Route::get('/GetAllUsers', [UserController::class, 'getAllUsers']);
+	Route::get('/GetAllUsers', 'getAllUsers');
+
+	Route::get('/GetUserById/{user}', 'getUserById');
+
+	Route::post('/SaveUser', 'saveUser');
+
+	Route::put('/UpdateUser/{user}', 'updateUser');
+
+	Route::delete('/DeleteUser/{user}', 'deleteUser');
 
 });
-

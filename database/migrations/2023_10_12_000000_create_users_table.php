@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-			$table->bigInteger('ids_document')->unsigned();
+			$table->bigInteger('ids_document')->unsigned()->nullable();
             $table->string('number_id');
 			$table->string('name');
             $table->string('second_name');

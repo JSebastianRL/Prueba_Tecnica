@@ -17,6 +17,7 @@ class User extends Authenticatable
 	use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
 	protected $fillable = [
+		'ids_document',
 		'number_id',
 		'name',
 		'second_name',
