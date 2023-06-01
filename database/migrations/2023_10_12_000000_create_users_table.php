@@ -1,0 +1,42 @@
+<?php
+
+use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Testing\Constraints\SoftDeletedInDatabase;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('users', function (Blueprint $table) {
+            $table->id();
+			$table->bigInteger('ids_document')->unsigned();
+            $table->string('number_id');
+			$table->string('name');
+            $table->string('second_name');
+            $table->string('email');
+            $table->string('password');
+            $table->timestamps();
+			$table->softDeletes();
+
+			$table
+				->foreign('ids_document')
+				->references('id')
+				->on('tipo_id_documents')
+				->onDelete('cascade');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('users');
+    }
+};
